@@ -11,6 +11,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var themeLabel: UILabel!
     @IBOutlet weak var themeSwitch: UISwitch!
@@ -18,26 +19,19 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
         
         if let weWantMidnight = UserDefaults.standard.object(forKey: "MidnightThemeOn") {
-            print("The app has launched before!")
             if weWantMidnight as! Bool {
                     switchToMidnight()
                 } else {
                     switchToDaylight()
                 }
-            
-        } else {
-            print("The app has been launched for the first time!")
-            UserDefaults.standard.set(false, forKey: "MidnightThemeOn")
-            switchToDaylight()
         }
         
     }
     
     
+    // MARK: - Actions
     @IBAction func switchToMidnight(_ sender: UISwitch) {
         if sender.isOn {
             switchToMidnight()
